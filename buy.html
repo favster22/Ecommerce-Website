@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Purchace Form</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f9f9f9;
+            }
+        
+            .form-container {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                width: 350px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        
+            .form-container h3 {
+                margin-bottom: 10px;
+                font-size: 1.2em;
+                color: #333;
+            }
+        
+            .form-container p {
+                margin-bottom: 20px;
+                font-size: 1em;
+                color: #555;
+            }
+        
+            .form-container label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+        
+            .form-container input[type="text"],
+            .form-container input[type="email"],
+            .form-container input[type="date"],
+            .form-container input[type="quantity"],
+            .form-container select {
+                width: calc(100% - 12px);
+                padding: 8px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 1em;
+            }
+        
+            .form-container button {
+                background-color: #007bff;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+                font-size: 1em;
+            }
+        
+            .form-container button:hover {
+                background-color: #0056b3;
+            }
+        
+            .error-message {
+                color: red;
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="form-container">
+            <form>
+                <label>Full Name:</label>
+                <input type="text" id="fullName" name="fullName"><br>
+
+                <label>Email:</label>
+                <input type="email" id="email" name="email"><br>
+
+                <label>Quantity:</label>
+                <input name="Quantity" type="quantity"><br>
+
+                <label>Date of Birth:</label>
+                <input name="Date" type="date"><br>
+
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" placeholder="Country"><br>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Address"><br>
+
+                <button>Order</button>
+            </form>
+        </div>
+
+        <script>
+            // Retrieve query parameters from the URL
+            const params = new URLSearchParams(window.location.search);
+            const productName = params.get('name');
+            const productPrice = params.get('price');
+            const productColor = params.get('color');
+            const productSize = params.get('size');
+
+           // Populate the form with product details
+           if (productName && productPrice) {
+               const formContainer = document.querySelector('.form-container');
+               const productDetails = document.createElement('div');
+               productDetails.innerHTML = `
+                   <h3>Product: ${productName}</h3>
+                   <p>Price: ${productPrice}</p>
+                   <p>Color: ${productColor}</p>
+                   <p>Size: ${productSize}</p>
+               `;
+               formContainer.insertBefore(productDetails, formContainer.firstChild);
+            }
+        
+        
+            // Handle form submission
+            document.querySelector('form').addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+        
+                // Collect form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    quantity: document.querySelector('input[name="Quantity"]').value,
+                    dateOfBirth: document.querySelector('input[name="Date"]').value,
+                    country: document.getElementById('country').value,
+                    address: document.getElementById('address').value,
+                    productName: productName,
+                    productPrice: productPrice
+                };
+        
+                // Validate form data
+                if (!formData.fullName || !formData.email || !formData.quantity || !formData.country || !formData.address) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+        
+                try {
+                    // Send form data to the backend
+                    const response = await fetch('/submit-purchase', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+        
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert(result.message);
+                        window.location.href = '/thank-you'; // Redirect to a thank-you page
+                    } else {
+                        alert(result.error || 'An error occurred while submitting your order.');
+                    }
+                } catch (error) {
+                    console.error('Error submitting purchase:', error);
+                    alert('An error occurred while submitting your order.');
+                }
+            });
+        </script>
+    </body>
+</html>

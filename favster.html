@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAVSTER - Men's Clothing Hub</title>
+    <link rel="stylesheet" href="css/favster.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">SHOP FAVSTER</div>
+            <nav>
+                <a href="categories.html">Categories</a>
+                <a href="shop.html">Shop</a>
+                <section id="products">
+            </nav>
+
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search for products">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="C:\Users\user\Desktop\My Website\frontend\images\gucci bag 2.jpg" alt="Gucci Bag">
+            </div>
+            <div class="slide fade">
+                <img src="images/boots 2.jpg" alt="Boots">
+            </div>
+            <div class="slide fade">
+                <img src="C:\Users\user\Desktop\My Website\frontend\images\jordan xii 2.jpg" alt="Air Jordan Spike 40">
+            </div>
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+        <div class="hero-content">
+            <h1>MEN'S CLOTHING HUB</h1>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="filters">
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><input type="checkbox" data-filter="category" value="sports"> Sports</li>
+                        <li><input type="checkbox" data-filter="category" value="training"> Training</li>
+                        <li><input type="checkbox" data-filter="category" value="lifestyle"> Lifestyle</li>
+                        <li><input type="checkbox" data-filter="category" value="basketball"> Basketball</li>
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Price</h3>
+                    <input type="range" min="0" max="1000" value="500">
+                    <p>Price: GHc0 - GHc1000</p>
+                </div>
+                <div class="filter-group">
+                    <h3>Brand</h3>
+                    <ul>
+                        <li><input type="checkbox" data-filter="brand" value="nike"> Nike</li>
+                        <li><input type="checkbox" data-filter="brand" value="adidas"> Adidas</li>
+                        <li><input type="checkbox" data-filter="brand" value="jordan"> Jordan</li>
+                        <li><input type="checkbox" data-filter="brand" value="clothing"> clothing</li>
+                        <li><input type="checkbox" data-filter="brand" value="bae's clothing"> BAE's Clothing</li>
+                        <li><input type="checkbox" data-filter="brand" value="puma"> Puma</li>
+                        <li><input type="checkbox" data-filter="brand" value="gucci"> Gucci</li>
+                        <li><input type="checkbox" data-filter="brand" value="made in ghana"> Made In Ghana</li>
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Color</h3>
+                    <div class="color-options">
+                        <span class="color-option" data-color="red" style="background-color: red;"></span>
+                        <span class="color-option" data-color="blue" style="background-color: blue;"></span>
+                        <span class="color-option" data-color="green" style="background-color: green;"></span>
+                        <span class="color-option" data-color="black" style="background-color: black;"></span>
+                        <span class="color-option" data-color="white" style="background-color: gray;"></span>
+                        <span class="color-option" data-color="brown" style="background-color: brown;"></span>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3>Size</h3>
+                    <div class="size-options">
+                        <span class="size-option">7</span>
+                        <span class="size-option">8</span>
+                        <span class="size-option">9</span>
+                        <span class="size-option">10</span>
+                        <span class="size-option">11</span>
+                        <span class="size-option">12</span>
+                        <span class="size-option">13</span>
+                        <span class="size-option">14</span>
+                        <span class="size-option">15</span>
+                        <span class="size-option">16</span>
+                        <span class="size-option">M</span>
+                        <span class="size-option">L</span>
+                        <span class="size-option">XL</span>
+                        <span class="size-option">XXL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-grid">
+                <div class="product" data-category="lifestyle" data-brand="adidas" data-color="black" data-size="M">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\adidas 1.jpg" alt="Adidas">
+                    <h3>Adidas</h3>
+                    <p class="product-price">GHc99.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Adidas', 'GHc99.99', 'black', 'M')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="adidas" data-color="black" data-size="XL">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\adidas 2.jpg" alt="Adidas">
+                    <h3>Adidas</h3>
+                    <p class="product-price">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Adidas', 'GHc299.99', 'black', 'XL')">Buy</button>
+                </div>
+                <div class="product" data-category="sports" data-brand="nike" data-color="black" data-size="14">
+                    <img src="images/boots.jpg" alt="Boots">
+                    <h3>Boots</h3>
+                    <p class="product-price">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('nike', 'GHc299.99', 'black', '14')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="jordan" data-color="black" data-size="10">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\jordan xii.jpg" alt="Air Jordan Spike 40">
+                    <h3>Air Jordan Spike 40</h3>
+                    <p class="product-price">GHc349.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Jordan', 'GHc349.99', 'black', '10')">Buy</button>
+                </div>
+                <div class="product" data-category="sports" data-brand="nike" data-color="black" data-size="12">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\nike air presto.jpg" alt="Nike Air Presto">
+                    <h3>Nike Air Presto</h3>
+                    <p class="product-price">GHc349.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Nike', 'GHc349.99', 'black', '12')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="gucci" data-color="black" data-size="M">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\gucci bag.jpg" alt="Gucci Bag">
+                    <h3>Gucci Bag</h3>
+                    <p class="product-price">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Gucci', 'GHc299.99', 'black', 'M')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="gucci" data-color="brown" data-size="L">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\Gucci Ophidia.jpg" alt="Gucci Ophidia">
+                    <h3>Gucci Ophidia</h3>
+                    <p class="product-price">GHc399.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Gucci', 'GHc399.99', 'brown', 'L')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="jordan" data-color="gray" data-size="14">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\jordan xx9 low.jpg" alt="Air Jordan XX9 Low">
+                    <h3>Air Jordan XX9 Low</h3>
+                    <p class="product-price">GHc349.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Jordan', 'GHc349.99', 'gray', '14')">Buy</button>
+                </div>
+                <div class="product" data-category="sports" data-brand="puma" data-color="black" data-size="12">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\puma unisex.jpg" alt="Puma Unisex">
+                    <h3>Puma Unisex</h3>
+                    <p class="product-price">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Puma', 'GHc299.99', 'black', '12')">Buy</button>
+                </div>
+                <div class="product" data-category="lifestyle" data-brand="jordan" data-color="gray" data-size="13">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\jordan 1 retro.jpg" alt="Jordan 1 Retro">
+                    <h3>Jordan 1 Retro</h3>
+                    <p class="product-price">GHc349.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Jordan', 'GHc349.99', 'gray', '13')">Buy</button>
+                </div>
+                <div class="product" data-category="sports" data-brand="nike" data-color="black" data-size="12">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\nike air zoom.jpg" alt="Nike Air Zoom">
+                    <h3>Nike Air Zoom</h3>
+                    <p class="product-price ">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Nike', 'GHc299.99', 'black', '12')">Buy</button>
+                </div>
+                <div class="product" data-category="basketball" data-brand="nike" data-color="black" data-size="14">
+                    <img src="C:\Users\user\Desktop\My Website\frontend\images\J 2.jpg" alt="Jordan 2">
+                    <h3>Jordan 2</h3>
+                    <p class="product-price ">GHc299.99</p>
+                    <button class="buy-button" onclick="redirectToBuy('Jordan', 'GHc299.99', 'black', '14')">Buy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p id="newsletter-message" style="color: red; display: none;"></p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">FJB</div>
+                <div class="footer-links">
+                    <a href="#">Get Help</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://fb.com/favstermedia"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/utdfavster?s=21"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/favsterjb?igsh=MW56YWxxYXBwNXd1OQ%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pin.it/1DA9ROYq3"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <p>&copy; 2025 FAVSTER. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="c:\Users\user\Desktop\My Website\frontend\js\favster.js"></script>
+</body>
+</html>
